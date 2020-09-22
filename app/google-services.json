@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "351126301177",
+    "firebase_url": "https://fuelistic-f6775.firebaseio.com",
+    "project_id": "fuelistic-f6775",
+    "storage_bucket": "fuelistic-f6775.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:351126301177:android:16756fdec6d866257b3528",
+        "android_client_info": {
+          "package_name": "com.example.fuelistic_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "351126301177-cvqj76figluf5taut6ked11himclktt7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fuelistic_test",
+            "certificate_hash": "3551fd7ecd5e98335e5c67821d59b12ed6d41828"
+          }
+        },
+        {
+          "client_id": "351126301177-9jpu2df0vcammr7piutb2ngfdr75mr84.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2Q6193JHFkp3bzLdKdQbWNbWwG1uNPpg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "351126301177-9jpu2df0vcammr7piutb2ngfdr75mr84.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
