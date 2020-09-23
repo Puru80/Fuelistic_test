@@ -1,13 +1,13 @@
-package com.example.fuelistic_test;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.fuelistic_test.LoginSignup;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.example.fuelistic_test.LoginSignup.SignUp;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.fuelistic_test.R;
 
 public class Login extends AppCompatActivity
 {

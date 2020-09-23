@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.example.fuelistic_test.Login;
 import com.example.fuelistic_test.R;
 
 public class AppStartupScreen extends AppCompatActivity {

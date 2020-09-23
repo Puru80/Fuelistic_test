@@ -1,4 +1,4 @@
-package com.example.fuelistic_test;
+package com.example.fuelistic_test.LoginSignup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
 
-import com.example.fuelistic_test.LoginSignup.AppStartupScreen;
+import com.example.fuelistic_test.R;
 
 public class MainActivity extends AppCompatActivity
 {

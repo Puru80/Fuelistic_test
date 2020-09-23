@@ -48,6 +48,7 @@
             <com.hbb20.CountryCodePicker
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/country_code_picker"
                 app:ccp_autoDetectCountry="true"
                 app:ccp_showFlag="true"
                 android:padding="5dp"
@@ -65,7 +66,8 @@
                 app:endIconMode="clear_text"
                 app:endIconTint="@color/black"
                 app:boxStrokeWidthFocused="2dp"
-                app:boxStrokeColor="@color/black">
+                app:boxStrokeColor="@color/black"
+                android:id="@+id/mobile_number">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -90,6 +92,7 @@
             android:layout_marginTop="20dp"
             android:background="@color/black"
             android:textColor="#fff"
+            android:onClick="callOtpVerify"
             android:elevation="5dp"
             android:fontFamily="@font/aclonica"/>
 

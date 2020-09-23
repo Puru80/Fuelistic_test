@@ -1,9 +1,11 @@
-package com.example.fuelistic_test;
+package com.example.fuelistic_test.LoginSignup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.WindowManager;
+
+import com.example.fuelistic_test.R;
 
 public class Onboarding extends AppCompatActivity {
 

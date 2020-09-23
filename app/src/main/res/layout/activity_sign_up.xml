@@ -17,7 +17,9 @@
             android:id="@+id/signup_back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5dp"/>
+            android:padding="5dp"
+            android:src="@drawable/back_icon"
+            />
 
         <ImageView
             android:id="@+id/logo_login"
@@ -55,7 +57,9 @@
                 app:endIconMode="clear_text"
                 app:endIconTint="@color/black"
                 app:boxStrokeWidthFocused="2dp"
-                app:boxStrokeColor="@color/black">
+                app:boxStrokeColor="@color/black"
+                android:id="@+id/signUp_full_name">
+
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -71,6 +75,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
+                android:id="@+id/signUp_username"
                 android:layout_height="wrap_content"
                 android:hint="Username"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -103,7 +108,8 @@
                 app:endIconMode="clear_text"
                 app:endIconTint="@color/black"
                 app:boxStrokeWidthFocused="2dp"
-                app:boxStrokeColor="@color/black">
+                app:boxStrokeColor="@color/black"
+                android:id="@+id/signUp_email">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -130,7 +136,8 @@
                 app:passwordToggleTint="@color/black"
                 app:endIconTint="@color/black"
                 app:boxStrokeWidthFocused="2dp"
-                app:boxStrokeColor="@color/black">
+                app:boxStrokeColor="@color/black"
+                android:id="@+id/signUp_password">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -156,7 +163,7 @@
             android:background="@color/black"
             android:textColor="#fff"
             android:elevation="5dp"
-            android:onClick="callNextSignupScreen"
+            android:onClick="callNextSignUpScreen"
             android:fontFamily="@font/aclonica"/>
 
 
