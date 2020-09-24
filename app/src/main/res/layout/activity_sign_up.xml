@@ -21,11 +21,6 @@
             android:src="@drawable/back_icon"
             />
 
-        <ImageView
-            android:id="@+id/logo_login"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"/>
 
         <TextView
             android:id="@+id/welcome_text"

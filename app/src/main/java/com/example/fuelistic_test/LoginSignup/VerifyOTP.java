@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chaos.view.PinView;
+import com.example.fuelistic_test.Database.UserHelperClass;
 import com.example.fuelistic_test.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,13 +23,15 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.TimeUnit;
 
 public class VerifyOTP extends AppCompatActivity {
 
     PinView pinFromUser;
-    String fullName, phoneNo, email, username, password, date, gender, whatToDO;
+    String fullName, phoneNo, email, username, password, dateOfBirth, gender, whatToDO;
     TextView otpDescriptionText;
     String codeBySystem;
 
@@ -47,12 +50,12 @@ public class VerifyOTP extends AppCompatActivity {
         email = getIntent().getStringExtra("email");
         username = getIntent().getStringExtra("username");
         password = getIntent().getStringExtra("password");
-        date = getIntent().getStringExtra("date");
+        dateOfBirth = getIntent().getStringExtra("date");
         gender = getIntent().getStringExtra("gender");
         phoneNo = getIntent().getStringExtra("phoneNo");
 //        whatToDO = getIntent().getStringExtra("whatToDO");
 
-        otpDescriptionText.setText("Enter One Time Password Sent Onn"+phoneNo);
+        otpDescriptionText.setText("Enter One Time Password Sent On "+phoneNo);
 
         sendVerificationCodeToUser(phoneNo);
 
@@ -91,19 +94,23 @@ public class VerifyOTP extends AppCompatActivity {
                 }
             };
 
+    public void call_next_screen(){
+
+
+    }
 
     private void verifyCode(String code) {
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(codeBySystem, code);
         signInWithPhoneAuthCredential(credential);
     }
 
- /*   public void call_next_screen(View view){
+    public void call_next_screen(View view){
         String code = pinFromUser.getText().toString();
         if(!code.isEmpty()){
             verifyCode(code);
         }
 
-    }*/
+    }
 
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
@@ -114,8 +121,8 @@ public class VerifyOTP extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            storeNewUserData();
 
-                            Toast.makeText(VerifyOTP.this, "Verification Completed! ", Toast.LENGTH_SHORT).show();
                         } else {
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                 Toast.makeText(VerifyOTP.this, "Verification Not Completed! Try again.", Toast.LENGTH_SHORT).show();
@@ -124,4 +131,15 @@ public class VerifyOTP extends AppCompatActivity {
                     }
                 });
     }
+
+    private void storeNewUserData() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+
+        UserHelperClass addNewUser = new UserHelperClass(fullName, username, email, phoneNo, password, dateOfBirth, gender);
+
+        reference.child(phoneNo).setValue(addNewUser);
+
+
+    }
+
 }

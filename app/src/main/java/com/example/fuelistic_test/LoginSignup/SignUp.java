@@ -103,13 +103,16 @@ public class SignUp extends AppCompatActivity {
 
     private boolean validatePassword() {
         String val = password.getEditText().getText().toString().trim();
-        String checkPassword = "[a-zA-Z0-9._-]+@[a-z]+.+[a-z]+";        //BUG HERE
+        String checkPassword = "\\A\\w{1,20}\\z";        //BUG HERE
 
         if (val.isEmpty()) {
             password.setError("Field can not be empty");
             return false;
+        } else if (val.length() > 20) {
+            username.setError("Password is too large!");
+            return false;
         } else if (!val.matches(checkPassword)) {
-            password.setError("Password should contain 4 characters!");
+            password.setError("Password should contain white spaces!");
             return false;
         } else {
             password.setError(null);
