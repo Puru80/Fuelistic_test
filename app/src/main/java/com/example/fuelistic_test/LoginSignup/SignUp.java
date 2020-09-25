@@ -38,13 +38,13 @@ public class SignUp extends AppCompatActivity {
         }
 
 
-        String _fullname = fullName.getEditText().getText().toString();
+        String _fullName = fullName.getEditText().getText().toString();
         String _username = username.getEditText().getText().toString();
         String _email = email.getEditText().getText().toString();
         String _password = password.getEditText().getText().toString();
 
         Intent intent = new Intent(getApplicationContext(), SignUp2ndScreen.class);
-        intent.putExtra("fullname", _fullname);
+        intent.putExtra("fullName", _fullName);
         intent.putExtra("email", _email);
         intent.putExtra("username", _username);
         intent.putExtra("password", _password);

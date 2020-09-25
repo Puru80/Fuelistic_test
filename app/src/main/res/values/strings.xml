@@ -2,7 +2,7 @@
     <string name="app_name">Fuelistic</string>
     <string name="hello_there">Hello there, Welcome back…</string>
     <string name="sign_to_cont">Sign in to continue</string>
-    <string name="email_mobile_number">Mobile Number</string>
+    <string name="email_mobile_number">Phone Number</string>
     <string name="password">Password</string>
     <string name="sign_in">SIGN IN</string>
     <string name="sign_up">New to this experience? SIGN UP!</string>
@@ -15,12 +15,18 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="txt_login">Login</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="forget_password_detail">Provide your account\'s phone number for which you want to reset your password!</string>
+    <string name="next">Next</string>
+    <string name="new_credentials">Reset Password</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="remember_me">Remember Me</string>
-    <string name="forgot_password">Forgot Password?</string>
+    <string name="new_credentials_detail">Your account has been recovered. Set your new password!</string>
+
+
 </resources>
