@@ -3,6 +3,7 @@ package com.example.fuelistic_test.LoginSignup;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -94,21 +95,20 @@ public class VerifyOTP extends AppCompatActivity {
                 }
             };
 
-    public void call_next_screen(){
 
-
-    }
 
     private void verifyCode(String code) {
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(codeBySystem, code);
         signInWithPhoneAuthCredential(credential);
     }
 
-    public void call_next_screen(View view){
+    public void callLoginScreenFromSIgnUp(View view){
         String code = pinFromUser.getText().toString();
         if(!code.isEmpty()){
             verifyCode(code);
         }
+
+        startActivity(new Intent(getApplicationContext(),Login.class));
 
     }
 

@@ -89,7 +89,7 @@ tools:context=".LoginSignup.VerifyOTP">
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="@color/black"
-            android:onClick="call_next_screen"
+            android:onClick="callLoginScreenFromSIgnUp"
             android:text="Verify Code"
             android:textColor="@color/white"
              />

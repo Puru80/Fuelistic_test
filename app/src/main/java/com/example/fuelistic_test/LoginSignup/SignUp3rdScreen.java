@@ -40,7 +40,7 @@ public class SignUp3rdScreen extends AppCompatActivity {
         }
 
         // get data passed from prev screen
-        String _fullname = getIntent().getStringExtra("fullName");
+        String _fullName = getIntent().getStringExtra("fullName");
         String _email = getIntent().getStringExtra("email");
         String _username = getIntent().getStringExtra("username");
         String _password = getIntent().getStringExtra("password");
@@ -62,7 +62,7 @@ public class SignUp3rdScreen extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), VerifyOTP.class);
 
         //pass data to next activity
-        intent.putExtra("fullname", _fullname);
+        intent.putExtra("fullName", _fullName);
         intent.putExtra("email", _email);
         intent.putExtra("username", _username);
         intent.putExtra("password", _password);
