@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav__home"
+            android:title="Home"/>
+
+        <item
+            android:id="@+id/nav__myOrders"
+            android:title="My Orders"/>
+        <item
+            android:id="@+id/nav__complaint"
+            android:title="Register Complaint"/>
+        <item
+            android:id="@+id/nav__wallet"
+            android:title="My Wallet"/>
+        <item
+            android:id="@+id/nav__myAddresses"
+            android:title="My Addresses"/>
+        <item
+            android:id="@+id/nav__upgrade"
+            android:title="Upgrade to Gold"/>
+
+
+    </group>
+
+    <item android:title="Profile">
+
+        <menu>
+
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav__myProfile"
+                    android:title="My Profile" />
+                <item
+                    android:id="@+id/nav__logout"
+                    android:title="Logout" />
+            </group>
+
+        </menu>
+
+    </item>
+
+
+    <item android:title="Contact Us">
+
+        <menu>
+            <group android:checkableBehavior="single">
+
+            <item
+                android:id="@+id/nav__sellFuel"
+                android:title="Sell Fuel !"/>
+            <item
+                android:id="@+id/nav__contactUs"
+                android:title="Contact Us"/>
+            </group>
+
+        </menu>
+
+    </item>
+
+
+
+
+</menu>

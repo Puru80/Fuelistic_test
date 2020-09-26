@@ -16,4 +16,14 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+
+    <!-- Menu Style -->
+    <style name="navigationTheme">
+        <!--        colour of text when selected-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--    <background coloue when selected-->
+        <item name="colorControlHighlight">@color/black</item>
+    </style>
+
+
 </resources>
