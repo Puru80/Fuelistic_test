@@ -39,11 +39,11 @@ public class VerifyOTP extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN );
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_verify_o_t_p);
 
         //hooks
-        pinFromUser= findViewById(R.id.pin_view);
+        pinFromUser = findViewById(R.id.pin_view);
         otpDescriptionText = findViewById(R.id.otp_description_text);
 
         //Get all the data from Intent
@@ -56,7 +56,7 @@ public class VerifyOTP extends AppCompatActivity {
         phoneNo = getIntent().getStringExtra("phoneNo");
 //        whatToDO = getIntent().getStringExtra("whatToDO");
 
-        otpDescriptionText.setText("Enter One Time Password Sent On "+phoneNo);
+        otpDescriptionText.setText("Enter One Time Password Sent On " + phoneNo);
 
         sendVerificationCodeToUser(phoneNo);
 
@@ -96,19 +96,18 @@ public class VerifyOTP extends AppCompatActivity {
             };
 
 
-
     private void verifyCode(String code) {
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(codeBySystem, code);
         signInWithPhoneAuthCredential(credential);
     }
 
-    public void callLoginScreenFromSIgnUp(View view){
+    public void callLoginScreenFromSIgnUp(View view) {
         String code = pinFromUser.getText().toString();
-        if(!code.isEmpty()){
+        if (!code.isEmpty()) {
             verifyCode(code);
+
         }
 
-        startActivity(new Intent(getApplicationContext(),Login.class));
 
     }
 
@@ -122,6 +121,7 @@ public class VerifyOTP extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             storeNewUserData();
+                            startActivity(new Intent(getApplicationContext(), Login.class));
 
                         } else {
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
