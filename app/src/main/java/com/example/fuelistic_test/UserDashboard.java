@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.fuelistic_test.Database.SessionManager;
+import com.example.fuelistic_test.LoginSignup.SignUp;
 import com.google.android.material.navigation.NavigationView;
 
 import java.lang.reflect.TypeVariable;
@@ -76,5 +78,9 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         return true;
+    }
+
+    public void callPlaceOrder(View view) {
+//        startActivity(new Intent(getApplicationContext(), ));
     }
 }

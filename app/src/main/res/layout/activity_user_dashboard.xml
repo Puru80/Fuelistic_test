@@ -49,6 +49,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
+                android:onClick="callPlaceOrder"
                 android:padding="5dp"
                 android:src="@drawable/fuel_tank_logo" />
 
