@@ -1,4 +1,4 @@
-package com.example.fuelistic_test;
+package com.example.fuelistic_test.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,11 +9,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.fuelistic_test.Database.SessionManager;
+import com.example.fuelistic_test.LoginSignup.Login;
 import com.example.fuelistic_test.LoginSignup.SignUp;
+import com.example.fuelistic_test.R;
 import com.google.android.material.navigation.NavigationView;
 
 import java.lang.reflect.TypeVariable;
@@ -32,6 +35,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_user_dashboard);
 
         //Hooks
@@ -81,6 +85,8 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     }
 
     public void callPlaceOrder(View view) {
-//        startActivity(new Intent(getApplicationContext(), ));
+        Intent intent = new Intent(getApplicationContext(), PlaceOrderr.class);
+        startActivity(intent);
+
     }
 }

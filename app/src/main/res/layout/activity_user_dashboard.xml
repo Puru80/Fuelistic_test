@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer__layout"
-    tools:context=".UserDashboard">
+    tools:context=".ui.UserDashboard">
     
     <com.google.android.material.navigation.NavigationView
         android:layout_width="300dp"
@@ -277,9 +277,9 @@
                     android:background="@color/colorPrimary"
                     android:fontFamily="@font/aclonica"
                     android:padding="20dp"
+                    android:onClick="callPlaceOrder"
                     android:text="Order Now"
                     android:textColor="@color/white" />
-
 
             </LinearLayout>
 

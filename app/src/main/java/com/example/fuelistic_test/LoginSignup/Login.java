@@ -1,7 +1,6 @@
 package com.example.fuelistic_test.LoginSignup;
 
 import android.app.AlertDialog;
-import android.app.DownloadManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,12 +18,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fuelistic_test.Database.SessionManager;
 import com.example.fuelistic_test.R;
-import com.example.fuelistic_test.UserDashboard;
+import com.example.fuelistic_test.ui.UserDashboard;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.hbb20.CountryCodePicker;
