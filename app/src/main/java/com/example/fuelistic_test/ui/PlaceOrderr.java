@@ -37,23 +37,23 @@ public class PlaceOrderr extends AppCompatActivity implements AdapterView.OnItem
         // Spinner click listener
         deliveryMode.setOnItemSelectedListener(this);
 
-        // Spinner Drop down elements
-        List<String> categories = new ArrayList<String>();
-        categories.add("Generator");
-        categories.add("Oil Can");
-        categories.add("Drum");
-        categories.add("Machine");
-        categories.add("Non-Mobile Engine");
-        categories.add("Other");
+        // Spinner Drop down elements for delivery mode
+        List<String> deliveryMode_categories = new ArrayList<String>();
+        deliveryMode_categories.add("Generator");
+        deliveryMode_categories.add("Oil Can");
+        deliveryMode_categories.add("Drum");
+        deliveryMode_categories.add("Machine");
+        deliveryMode_categories.add("Non-Mobile Engine");
+        deliveryMode_categories.add("Other");
 
         // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+        ArrayAdapter<String> deliveryMode_dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, deliveryMode_categories);
 
         // Drop down layout style - list view with radio button
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        deliveryMode_dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // attaching data adapter to spinner
-        deliveryMode.setAdapter(dataAdapter);
+        deliveryMode.setAdapter(deliveryMode_dataAdapter);
     }
 
     final Calendar myCalendar = Calendar.getInstance();
