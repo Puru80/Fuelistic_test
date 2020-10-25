@@ -5,18 +5,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.fuelistic_test.R;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
-public class PlaceOrderr extends AppCompatActivity {
+public class PlaceOrderr extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     TextInputEditText deliveryDate;
+    Spinner deliveryMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +32,34 @@ public class PlaceOrderr extends AppCompatActivity {
 
         //Hooks
         deliveryDate= (TextInputEditText) findViewById(R.id.deliveryDate);
+        // Spinner element
+        deliveryMode = (Spinner) findViewById(R.id.deliveryMode);
+        // Spinner click listener
+        deliveryMode.setOnItemSelectedListener(this);
 
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("Generator");
+        categories.add("Oil Can");
+        categories.add("Drum");
+        categories.add("Machine");
+        categories.add("Non-Mobile Engine");
+        categories.add("Other");
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        deliveryMode.setAdapter(dataAdapter);
     }
 
     final Calendar myCalendar = Calendar.getInstance();
-    DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+    long minDate  = myCalendar.getTimeInMillis();
 
+    DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
             // TODO Auto-generated method stub
@@ -43,10 +72,12 @@ public class PlaceOrderr extends AppCompatActivity {
     };
 
     public void selectDate(View view) {
-        new DatePickerDialog(PlaceOrderr.this, date, myCalendar
+        DatePickerDialog dpd = new DatePickerDialog(PlaceOrderr.this, date, myCalendar
                 .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                myCalendar.get(Calendar.DAY_OF_MONTH));
 
+        dpd.getDatePicker().setMinDate(minDate);
+        dpd.show();
     } ;
 
     private void updateLabel() {
@@ -54,5 +85,17 @@ public class PlaceOrderr extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         deliveryDate.setText(sdf.format(myCalendar.getTime()));
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // On selecting a spinner item
+        // String item = parent.getItemAtPosition(position).toString();
+        // item above is the deliveryMode selected, we will see later iska kya krna h
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+        // leaving it empty for now
     }
 }
