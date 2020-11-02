@@ -149,33 +149,47 @@
                 android:prompt="@string/hello_there"
                 />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:fontFamily="@font/aclonica"
-                android:text="Select a delivery address"/>
 
-
-            <com.google.android.material.textfield.TextInputLayout
+            <Button
+                android:id="@+id/select_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:fontFamily="@font/aclonica"
+                android:padding="20dp"
+                android:onClick="callSelectAddress"
+                android:text="Select a delivery address"
+                android:textColor="@color/black" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:inputType="number"
-                    android:focusable="true"
-                    android:fontFamily="@font/aclonica">
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="15dp"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="15sp"-->
+<!--                android:fontFamily="@font/aclonica"-->
+<!--                android:text="Select a delivery address"/>-->
+<!--            -->
+<!--            -->
 
-                </com.google.android.material.textfield.TextInputEditText>
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/select_Address"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:onClick="callSelectAddress"-->
+<!--                    android:fontFamily="@font/aclonica">-->
+
+<!--                </com.google.android.material.textfield.TextInputEditText>-->
 
 
-            </com.google.android.material.textfield.TextInputLayout>
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
 
 
 

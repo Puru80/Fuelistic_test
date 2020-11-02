@@ -95,11 +95,12 @@ public class Login extends AppCompatActivity {
                         String _password = snapshot.child(_completePhoneNo).child("password").getValue(String.class);
                         String _gender = snapshot.child(_completePhoneNo).child("gender").getValue(String.class);
                         String _username = snapshot.child(_completePhoneNo).child("username").getValue(String.class);
+                        String _address = snapshot.child(_completePhoneNo).child("address").getValue(String.class);
 
 
                         //create a Session
                         SessionManager sessionManager = new SessionManager(Login.this);
-                        sessionManager.createLoginSession(_fullName, _username, _email , _phoneNo, _password, _dateOfBirth, _gender);
+                        sessionManager.createLoginSession(_fullName, _username, _email , _phoneNo, _password, _dateOfBirth, _gender, _address);
 
                         startActivity(new Intent(getApplicationContext(), UserDashboard.class));
 

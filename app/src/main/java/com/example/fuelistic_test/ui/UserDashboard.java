@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.fuelistic_test.Database.SessionManager;
 import com.example.fuelistic_test.LoginSignup.Login;
 import com.example.fuelistic_test.LoginSignup.SignUp;

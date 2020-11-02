@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.fuelistic_test"
-        minSdkVersion 16
+        minSdkVersion 26
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -42,6 +42,19 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     //OTP Pin view design
     implementation 'com.chaos.view:pinview:1.4.3'
+
+    //Butter-knife
+
+    //FOR USER PERMISSION
+    implementation 'com.karumi:dexter:5.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+
+    //trying to implement ioreactive for langlat
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    // Because RxAndroid releases are few and far between, it is recommended you also
+    // explicitly depend on RxJava's latest version for bug fixes and new features.
+    // (see https://github.com/ReactiveX/RxJava/releases for latest 3.x.x version)
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
 
 }
 

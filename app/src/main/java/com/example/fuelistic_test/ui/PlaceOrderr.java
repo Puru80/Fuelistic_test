@@ -2,23 +2,35 @@ package com.example.fuelistic_test.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.fuelistic_test.Database.SessionManager;
+import com.example.fuelistic_test.LoginSignup.SignUp;
 import com.example.fuelistic_test.R;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+
+import static java.security.AccessController.getContext;
 
 public class PlaceOrderr extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -98,4 +110,11 @@ public class PlaceOrderr extends AppCompatActivity implements AdapterView.OnItem
     public void onNothingSelected(AdapterView<?> adapterView) {
         // leaving it empty for now
     }
+
+    public void callSelectAddress(View view) {
+        startActivity(new Intent(getApplicationContext(), PlaceOrder2nd.class));
+    }
+
+
+
 }
