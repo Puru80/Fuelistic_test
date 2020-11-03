@@ -60,6 +60,8 @@ public class SessionManager {
         return userData;
     }
 
+
+
     public boolean checkLogin() {
         if (userSession.getBoolean(IS_LOGIN, false)) {
             return true;

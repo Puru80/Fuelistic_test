@@ -8,6 +8,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -19,10 +20,13 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fuelistic_test.Database.SessionManager;
+import com.example.fuelistic_test.Common.Common;
+import com.example.fuelistic_test.Model.Order;
 import com.example.fuelistic_test.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -32,6 +36,8 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -39,35 +45,60 @@ import java.util.List;
 import java.util.Locale;
 
 import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.observers.DisposableSingleObserver;
 
 public class PlaceOrder2nd extends AppCompatActivity {
 
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
     LocationRequest locationRequest;
     LocationCallback locationCallback;
     FusedLocationProviderClient fusedLocationProviderClient;
     Location currentLocation;
+
+    EditText edit_address;
+    EditText edit_comment;
+    TextView text_address;
+    RadioButton rdb_home_add;
+    RadioButton rdb_other_add;
+    RadioButton rdb_use_current_add;
+    RadioButton rdb_cod;
+    RadioButton rdb_braintree;
+
+    double totalPrice = 0;
+
+    String deliveryDate , deliveryMode, fuelType,orderQuantity;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_order2nd);
 
+        //get data from prev screen
+        //Get all the data from Intent
+        deliveryDate = getIntent().getStringExtra("deliveryDate");
+        deliveryMode = getIntent().getStringExtra("deliveryMode");
+//        fuelType = getIntent().getStringExtra("fuelType");
+        orderQuantity = getIntent().getStringExtra("orderQuantity");
 
-        final EditText edit_address = findViewById(R.id.edit_address);
-        EditText edit_comment = findViewById(R.id.edit_comment);
-        final TextView text_address = findViewById(R.id.text_address_detail);
-        RadioButton rdb_home_add = findViewById(R.id.rdb_home_add);
-        RadioButton rdb_other_add = findViewById(R.id.rdb_other_add);
-        RadioButton rdb_use_current_add = findViewById(R.id.rdb_use_current_add);
-        RadioButton rdb_cod = findViewById(R.id.rdb_cod);
-        RadioButton rdb_braintree = findViewById(R.id.rdb_braintree);
+
+        edit_address = findViewById(R.id.edit_address);
+        edit_comment = findViewById(R.id.edit_comment);
+        text_address = findViewById(R.id.text_address_detail);
+        rdb_home_add = findViewById(R.id.rdb_home_add);
+        rdb_other_add = findViewById(R.id.rdb_other_add);
+        rdb_use_current_add = findViewById(R.id.rdb_use_current_add);
+        rdb_cod = findViewById(R.id.rdb_cod);
+        rdb_braintree = findViewById(R.id.rdb_braintree);
+
+
 
         //trying to get data from session manager
         SessionManager sessionManager = new SessionManager(this);
         HashMap<String, String> userDetails = sessionManager.getUserDetailFromSession();
-
         final String address = userDetails.get(SessionManager.KEY_ADDRESS);
 
         //Data
@@ -122,9 +153,9 @@ public class PlaceOrder2nd extends AppCompatActivity {
                                     Disposable disposable = singleAddress.subscribeWith(new DisposableSingleObserver<String>(){
                                         @Override
                                         public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull String s) {
-                                            edit_address.setText(coordinates);
-                                            text_address.setText(s);
-                                            text_address.setVisibility(View.VISIBLE);
+                                            edit_address.setText(s);
+                                            //text_address.setText(s);
+                                            text_address.setVisibility(View.GONE);
                                         }
 
                                         @Override
@@ -147,7 +178,6 @@ public class PlaceOrder2nd extends AppCompatActivity {
 
         initLocation();
 
-
 //        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
 //            @Override
 //            public void onClick(DialogInterface dialogInterface, int i) {
@@ -164,6 +194,8 @@ public class PlaceOrder2nd extends AppCompatActivity {
 //        dialog.show();
 
     }
+
+
 
     private String getAddressFromLatLng(double latitude, double longitude) {
         Geocoder geocoder = new Geocoder(this , Locale.getDefault());
@@ -184,6 +216,15 @@ public class PlaceOrder2nd extends AppCompatActivity {
             result = e.getMessage();
         }
         return result;
+    }
+
+    @Override
+    public void onStop(){
+        if(fusedLocationProviderClient!=null)
+            fusedLocationProviderClient.removeLocationUpdates(locationCallback);
+
+        compositeDisposable.clear();
+        super.onStop();
     }
 
     @SuppressLint("MissingPermission")
@@ -215,5 +256,63 @@ public class PlaceOrder2nd extends AppCompatActivity {
 
     }
 
+    public void place_Order(View view) {
+        if(rdb_cod.isChecked())
+            paymentCOD(edit_address.getText().toString(), edit_comment.getText().toString());
+    }
 
+    private void paymentCOD(String address, String comment) {
+        double finalPrice = totalPrice ;
+        Order order = new Order();
+
+        //trying to get data from session manager
+        SessionManager sessionManager = new SessionManager(this);
+        HashMap<String, String> userDetails = sessionManager.getUserDetailFromSession();
+        order.setUserName(userDetails.get(SessionManager.KEY_USERNAME));
+        order.setUserPhone(userDetails.get(SessionManager.KEY_PHONENUMBER));
+        order.setShippingAddress(address);
+        order.setComment(comment);
+
+        if(currentLocation != null){
+            order.setLat(currentLocation.getLatitude());
+            order.setLng(currentLocation.getLongitude());
+        }
+        else{
+            order.setLng(-0.1f);
+            order.setLat(-0.1f);
+        }
+
+        order.setTotalPayment(totalPrice);
+        order.setDeliveryCharge(0);  //laterr
+        order.setFinalPayment(finalPrice);
+        order.setCod(true);
+        order.setTransactionId("Cash On Delivery");
+        order.setFuelType(fuelType);
+        order.setQuantity(orderQuantity);
+        order.setDeliveryDate(deliveryDate);
+        order.setDeliveryMode(deliveryMode);
+
+        writeOrderToFirebase(order);
+    }
+
+    private void writeOrderToFirebase(Order order) {
+        FirebaseDatabase.getInstance()
+                .getReference("Orders")
+                .child(Common.createOrderNumber())
+                .setValue(order)
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+//                        Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+//                Toast.makeText(this, " AADD",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), UserDashboard.class);
+                startActivity(intent);
+            }
+        });
+    }
 }

@@ -56,6 +56,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fuel_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -113,6 +114,7 @@
                 android:text="Set Quantity"/>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/order_quantity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -149,72 +151,12 @@
                 android:prompt="@string/hello_there"
                 />
 
-
             <Button
                 android:id="@+id/select_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@color/white"
-                android:fontFamily="@font/aclonica"
-                android:padding="20dp"
                 android:onClick="callSelectAddress"
-                android:text="Select a delivery address"
-                android:textColor="@color/black" />
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="15dp"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="15sp"-->
-<!--                android:fontFamily="@font/aclonica"-->
-<!--                android:text="Select a delivery address"/>-->
-<!--            -->
-<!--            -->
-
-
-<!--            <com.google.android.material.textfield.TextInputLayout-->
-<!--                android:id="@+id/select_Address"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
-
-<!--                <com.google.android.material.textfield.TextInputEditText-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:onClick="callSelectAddress"-->
-<!--                    android:fontFamily="@font/aclonica">-->
-
-<!--                </com.google.android.material.textfield.TextInputEditText>-->
-
-
-<!--            </com.google.android.material.textfield.TextInputLayout>-->
-
-
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="15dp"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="15sp"-->
-<!--                android:fontFamily="@font/aclonica"-->
-<!--                android:text="Payment Method"/>-->
-
-<!--            <Spinner-->
-<!--                android:id="@+id/paymentMethod"-->
-<!--                android:layout_width="fill_parent"-->
-<!--                android:layout_height="50dp"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:background="@drawable/spinner_background"-->
-<!--                android:prompt="@string/hello_there"-->
-<!--                />-->
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:background="@color/colorPrimary"
                 android:fontFamily="@font/aclonica"
                 android:padding="20dp"

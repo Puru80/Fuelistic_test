@@ -2,12 +2,13 @@ package com.example.fuelistic_test.Database;
 
 public class UserHelperClass {
 
-    String fullName, username, email, phoneNo, password, dateOfBirth, gender;
+    String fullName, username, email, phoneNo, password, dateOfBirth, gender, address;
 
     public UserHelperClass() {
     }
 
-    public UserHelperClass(String fullName, String username, String email, String phoneNo, String password, String dateOfBirth, String gender) {
+    public UserHelperClass(String fullName, String username, String email, String phoneNo, String password,
+                           String dateOfBirth, String gender, String address) {
         this.fullName = fullName;
         this.username = username;
         this.email = email;
@@ -15,6 +16,7 @@ public class UserHelperClass {
         this.password = password;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
+        this.address = address;
     }
 
     public String getFullName() {
@@ -43,6 +45,14 @@ public class UserHelperClass {
 
     public String getPhoneNo() {
         return phoneNo;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public void setPhoneNo(String phoneNo) {

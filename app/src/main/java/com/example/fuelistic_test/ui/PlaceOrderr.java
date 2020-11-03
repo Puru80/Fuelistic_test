@@ -20,8 +20,10 @@ import android.widget.Toast;
 
 import com.example.fuelistic_test.Database.SessionManager;
 import com.example.fuelistic_test.LoginSignup.SignUp;
+import com.example.fuelistic_test.LoginSignup.SignUp2ndScreen;
 import com.example.fuelistic_test.R;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,6 +38,8 @@ public class PlaceOrderr extends AppCompatActivity implements AdapterView.OnItem
 
     TextInputEditText deliveryDate;
     Spinner deliveryMode;
+    String fuelType;
+    TextInputLayout orderQuantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,9 @@ public class PlaceOrderr extends AppCompatActivity implements AdapterView.OnItem
 
         //Hooks
         deliveryDate= (TextInputEditText) findViewById(R.id.deliveryDate);
+        fuelType = "High Speed Diesel";
+        orderQuantity= findViewById(R.id.order_quantity);
+
         // Spinner element
         deliveryMode = (Spinner) findViewById(R.id.deliveryMode);
         // Spinner click listener
@@ -112,7 +119,19 @@ public class PlaceOrderr extends AppCompatActivity implements AdapterView.OnItem
     }
 
     public void callSelectAddress(View view) {
-        startActivity(new Intent(getApplicationContext(), PlaceOrder2nd.class));
+
+        //String _fuelType = fuelType;
+        String _deliveryDate = deliveryDate.getText().toString();
+        String _orderQuantity = orderQuantity.getEditText().getText().toString();
+        String _deliveryMode = deliveryMode.getSelectedItem().toString();
+
+        Intent intent = new Intent(getApplicationContext(), PlaceOrder2nd.class);
+        //intent.putExtra("fuelType",_fuelType );
+        intent.putExtra("deliveryDate", _deliveryDate);
+        intent.putExtra("orderQuantity", _orderQuantity);
+        intent.putExtra("deliveryMode", _deliveryMode);
+
+        startActivity(intent);
     }
 
 

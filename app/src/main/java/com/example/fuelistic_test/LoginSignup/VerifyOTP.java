@@ -32,7 +32,7 @@ import java.util.concurrent.TimeUnit;
 public class VerifyOTP extends AppCompatActivity {
 
     PinView pinFromUser;
-    String fullName, phoneNo, email, username, password, dateOfBirth, gender, whatToDO;
+    String fullName, phoneNo, email, username, password, dateOfBirth, gender,address, whatToDO;
     TextView otpDescriptionText;
     String codeBySystem;
 
@@ -54,6 +54,7 @@ public class VerifyOTP extends AppCompatActivity {
         dateOfBirth = getIntent().getStringExtra("date");
         gender = getIntent().getStringExtra("gender");
         phoneNo = getIntent().getStringExtra("phoneNo");
+        address = getIntent().getStringExtra("address");
 //        whatToDO = getIntent().getStringExtra("whatToDO");
 
         otpDescriptionText.setText("Enter One Time Password Sent On " + phoneNo);
@@ -135,7 +136,7 @@ public class VerifyOTP extends AppCompatActivity {
     private void storeNewUserData() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
 
-        UserHelperClass addNewUser = new UserHelperClass(fullName, username, email, phoneNo, password, dateOfBirth, gender);
+        UserHelperClass addNewUser = new UserHelperClass(fullName, username, email, phoneNo, password, dateOfBirth, gender, address);
 
         reference.child(phoneNo).setValue(addNewUser);
 
