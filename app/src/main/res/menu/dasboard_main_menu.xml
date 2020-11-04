@@ -10,20 +10,18 @@
             android:id="@+id/nav__myOrders"
             android:title="My Orders"/>
         <item
-            android:id="@+id/nav__complaint"
-            android:title="Register Complaint"/>
+            android:id="@+id/nav__faq"
+            android:title="FAQs"/>
         <item
             android:id="@+id/nav__wallet"
             android:title="My Wallet"/>
-        <item
-            android:id="@+id/nav__myAddresses"
-            android:title="My Addresses"/>
-        <item
-            android:id="@+id/nav__upgrade"
-            android:title="Upgrade to Gold"/>
 
+        <item
+            android:id="@+id/nav__goldMem"
+            android:title="Gold Membership"/>
 
     </group>
+
 
     <item android:title="Profile">
 
